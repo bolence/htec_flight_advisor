@@ -20,6 +20,14 @@ Regular user can:
 - Update a comment.
 
 Besides comment’s description, each comment should have created and modified date.
+
+## Guide
+
+Run these commands before any actions:
+```bash
+php artisan migrate
+php artisan db:seed (This will be seed admin user for your first login)
+```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
