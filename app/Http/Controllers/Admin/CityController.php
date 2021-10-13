@@ -86,7 +86,8 @@ class CityController extends Controller
         $city->fill($request->validated());
         $city->push();
 
-        return redirect('/admin/city');
+        return redirect('/admin/city')
+                ->withSuccess('City was successfully updated.');
     }
 
     /**

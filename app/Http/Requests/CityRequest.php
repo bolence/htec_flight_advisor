@@ -24,7 +24,7 @@ class CityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:cities,name',
+            'name' => 'required|unique:cities,name' . $this->id,
             'country' => 'required',
             'description' => 'required'
         ];
