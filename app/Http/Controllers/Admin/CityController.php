@@ -17,7 +17,6 @@ class CityController extends Controller
     public function index()
     {
         $search = request()->search;
-        $limit_comments = (int) request()->limit_comments;
 
         $cities = City::when($search, function($q) use($search) {
             return $q->whereName($search);

@@ -14,12 +14,15 @@
                     <form action="" style="margin-top: -25px;">
                         @csrf
                         <a href="/home" class="btn btn-danger float-right ml-2">Reset filter</a>
+                        @if($cities->count() > 0)
                         <button type="submit" class="btn btn-primary float-right"> Search city</button>
                         <input type="text" name="search" id="search" class="form-control float-right mr-2" style="width: 200px" placeholder="Enter city name" value="{{ request()->search ?? request()->search }}">
+                        @endif
                     </form>
                 </div>
 
                 <div class="card-body">
+                    @if($cities->count() > 0)
                     @include('layouts.alert_success')
                     @include('layouts.alert_error')
                     <table class="table table-striped table-bordered">
@@ -67,11 +70,17 @@
                                     </td>
                                 </tr>
                                 @endforeach
-
-
                             </tbody>
                     </table>
-
+                    @else
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>There is no cities. Add first one.</strong>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
