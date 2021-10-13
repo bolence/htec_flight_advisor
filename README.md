@@ -19,7 +19,7 @@ Regular user can:
 - Delete a comment .
 - Update a comment.
 
-Besides comment’s description, each comment should have created and modified date.
+Beside comment’s description, each comment should have created and modified date.
 
 ## Guide
 
@@ -28,6 +28,7 @@ Run these commands before any actions:
 php artisan migrate
 php artisan db:seed (This will be seed admin user for your first login)
 ```
+Also, don't forget to setup your .env file with database login details.
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
