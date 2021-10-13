@@ -55,11 +55,6 @@ class CityController extends Controller
                 ->withSuccess('City successfully saved.');
     }
 
-    public function show($id)
-    {
-
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,9 +77,15 @@ class CityController extends Controller
      */
     public function update(CityRequest $request, $id)
     {
-        $city = City::find($id);
-        $city->fill($request->validated());
-        $city->push();
+        try {
+            $city = City::find($id);
+            $city->fill($request->validated());
+            $city->push();
+        } catch (Exception $e) {
+            info($e->getMessage());
+            return redirect('/admin/city')
+                    ->with(['error' => 'Error during deleting a city']);
+        }
 
         return redirect('/admin/city')
                 ->withSuccess('City was successfully updated.');
@@ -102,12 +103,13 @@ class CityController extends Controller
 
         try
         {
-            $city->delete();
             $city->comments()->delete();
+            $city->delete();
         }
         catch (Exception $e)
         {
-            return redirect('/admin/city')->with(['error' => 'Error occured while deleting ' . $e->getMessage()]);
+            info($e->getMessage());
+            return redirect('/admin/city')->with(['error' => 'Error occured while deleting city']);
         }
 
         return redirect('/admin/city')

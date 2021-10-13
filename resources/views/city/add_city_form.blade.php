@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label for="pwd">City description</label>
-                            <textarea name="description" id="description" cols="30" rows="10" class="form-control @error('description') is-invalid @enderror"></textarea>
+                            <textarea name="description" id="description" cols="20" rows="6" class="form-control @error('description') is-invalid @enderror"></textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
